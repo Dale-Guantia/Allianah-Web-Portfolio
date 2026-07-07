@@ -1,16 +1,22 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const LINKS = [
-  { href: '/#about', label: 'About' },
-  { href: '/#selected-work', label: 'Selected Work' },
-  { href: '/#certifications', label: 'Certifications' },
-  { href: '/#gallery', label: 'Gallery' },
-  { href: '/#contact', label: 'Contact' },
+  { to: '/', label: 'Home', end: true },
+  { to: '/about', label: 'About' },
+  { to: '/selected-work', label: 'Selected Work' },
+  { to: '/certifications', label: 'Certifications' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 // Swap this path (or the file at public/resume.pdf) to update the resume link.
 const RESUME_HREF = '/resume.pdf'
+
+const linkClass = ({ isActive }) =>
+  `pb-1 border-b-2 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black ${
+    isActive ? 'border-ink text-ink' : 'border-transparent text-ink/70 hover:text-ink'
+  }`
 
 function MenuIcon() {
   return (
@@ -32,9 +38,7 @@ function CloseIcon() {
 }
 
 export default function Nav() {
-  const location = useLocation()
   const [isOpen, setIsOpen] = useState(false)
-  const currentHash = location.pathname === '/' ? location.hash || '#hero' : ''
 
   return (
     <div className="sticky top-0 z-50 backdrop-blur-md bg-cream/60">
@@ -42,27 +46,19 @@ export default function Nav() {
         className="max-w-[1040px] mx-auto px-4 sm:px-12 flex items-center justify-between gap-x-6 py-4"
         aria-label="Primary"
       >
-        <Link to="/#hero" className="shrink-0 font-serif text-lg sm:text-xl font-bold text-ink">
+        <Link to="/" className="shrink-0 font-serif text-lg sm:text-xl font-bold text-ink">
           Allianah Fradejas
         </Link>
 
         <div className="hidden md:flex flex-wrap items-center justify-end gap-x-5 gap-y-2 sm:gap-x-6">
           <ul className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 sm:gap-x-6 text-xs uppercase tracking-wide">
-            {LINKS.map((link) => {
-              const isActive = currentHash === link.href.slice(1)
-              return (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className={`pb-1 border-b-2 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black ${
-                      isActive ? 'border-ink text-ink' : 'border-transparent text-ink/70 hover:text-ink'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              )
-            })}
+            {LINKS.map((link) => (
+              <li key={link.to}>
+                <NavLink to={link.to} end={link.end} className={linkClass}>
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
 
           <a
@@ -89,22 +85,13 @@ export default function Nav() {
       {isOpen && (
         <div className="md:hidden px-4 pb-6 pt-2 border-t border-ink/10">
           <ul className="flex flex-col items-start gap-4 text-sm uppercase tracking-wide">
-            {LINKS.map((link) => {
-              const isActive = currentHash === link.href.slice(1)
-              return (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`pb-1 border-b-2 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black ${
-                      isActive ? 'border-ink text-ink' : 'border-transparent text-ink/70 hover:text-ink'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              )
-            })}
+            {LINKS.map((link) => (
+              <li key={link.to}>
+                <NavLink to={link.to} end={link.end} onClick={() => setIsOpen(false)} className={linkClass}>
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
 
           <a

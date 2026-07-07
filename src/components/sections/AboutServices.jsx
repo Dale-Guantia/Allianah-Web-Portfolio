@@ -2,12 +2,12 @@ const SERVICES = ['Product design', 'Design systems', 'Prototyping', 'User resea
 
 export default function AboutServices() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="py-20 sm:py-24">
+    <section id="about" aria-labelledby="about-heading" className="py-10 sm:py-14">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 id="about-heading" className="font-serif text-3xl sm:text-4xl font-bold text-ink mb-6">
+          <h1 id="about-heading" className="font-serif text-3xl sm:text-4xl font-bold text-ink mb-6">
             About
-          </h2>
+          </h1>
           <p className="text-base sm:text-lg text-ink/80 leading-relaxed mb-8">
             I&apos;m a product designer based in Manila. I&apos;ve spent the last six years turning
             messy problems into clear, simple products. I like tight deadlines, strong opinions

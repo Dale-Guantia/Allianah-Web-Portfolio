@@ -26,8 +26,8 @@ const PROJECTS = [
 
 export default function Projects() {
   return (
-    <section id="selected-work" aria-labelledby="selected-work-heading" className="py-20 sm:py-24">
-      <SectionHeading id="selected-work-heading" title="Selected Work" />
+    <section id="selected-work" aria-labelledby="selected-work-heading" className="py-10 sm:py-14">
+      <SectionHeading id="selected-work-heading" title="Selected Work" level="h1" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {PROJECTS.map((project) => (
           <ProjectCard

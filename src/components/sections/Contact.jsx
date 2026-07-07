@@ -10,11 +10,11 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="py-20 sm:py-24">
+    <section id="contact" aria-labelledby="contact-heading" className="py-10 sm:py-14">
       <div className="max-w-xl mx-auto text-center">
-        <h2 id="contact-heading" className="font-serif text-3xl sm:text-4xl font-bold text-ink">
+        <h1 id="contact-heading" className="font-serif text-3xl sm:text-4xl font-bold text-ink">
           Let&apos;s Chat!
-        </h2>
+        </h1>
         <p className="mt-4 text-ink/70">
           Got a project, a rough idea, or just want to say hi? Drop me a line.
         </p>

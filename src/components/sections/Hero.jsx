@@ -2,7 +2,7 @@ import Button from '../ui/Button.jsx'
 
 export default function Hero() {
   return (
-    <section id="hero" className="py-20 sm:py-24 text-center flex flex-col items-center">
+    <section id="hero" className="py-10 sm:py-14 text-center flex flex-col items-center">
       <img
         src="https://picsum.photos/seed/maya-avatar/240/240"
         alt="Portrait"
@@ -12,7 +12,7 @@ export default function Hero() {
         Hi, I&apos;m Allianah. I design things people actually use.
       </h1>
       <div className="mt-10">
-        <Button href="#selected-work">See My Work</Button>
+        <Button to="/selected-work">See My Work</Button>
       </div>
     </section>
   )

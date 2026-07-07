@@ -1,5 +1,15 @@
-export default function Button({ children, type = 'button', href, onClick, className = '' }) {
+import { Link } from 'react-router-dom'
+
+export default function Button({ children, type = 'button', href, to, onClick, className = '' }) {
   const classes = `inline-block bg-black text-white uppercase tracking-widest text-sm font-medium px-8 py-3 transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black ${className}`
+
+  if (to) {
+    return (
+      <Link to={to} className={classes}>
+        {children}
+      </Link>
+    )
+  }
 
   if (href) {
     return (
