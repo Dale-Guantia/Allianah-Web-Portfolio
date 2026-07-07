@@ -24,7 +24,7 @@ export default function AboutServices() {
         </div>
         <img
           src="https://picsum.photos/seed/maya-about/640/720"
-          alt="Maya Reyes at her desk, sketching a wireframe"
+          alt="sketching a wireframe"
           className="w-full h-full object-cover grayscale"
         />
       </div>
